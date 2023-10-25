@@ -114,7 +114,7 @@ try {
     await page.waitForURL(URL_CLAIM);
     if (!cfg.debug) context.setDefaultTimeout(cfg.timeout);
   }
-  user = await page.locator('a[role="button"]:has-text("Account Menu")').getAttribute('Title');
+  user = await page.getByLabel("Account Menu").getAttribute('Title');
   console.log(`Signed in as ${user}`);
   db.data[user] ||= {};
   if (cfg.time) console.timeEnd('login');
